@@ -22,11 +22,9 @@ export class RecordsService {
     };
   }
 
-  findRecords(records?: IRecord[]): IRecord[] {
+  findRecords(): IRecord[] {
     const localStorageRecords = localStorage.getItem(recordsKey);
-    if (records){
-      return records;
-    } else if (localStorageRecords) {
+    if (localStorageRecords) {
       return JSON.parse(localStorageRecords);
     } else {
       const records: IRecord[] = [];
@@ -45,7 +43,7 @@ export class RecordsService {
       const generatedRecord = this.generateRecord(record)
       records.push(generatedRecord);
       localStorage.setItem(recordsKey, JSON.stringify(records));
-      return this.findRecords(records);
+      return this.findRecords();
     } else {
       throw new Error('Error occured while adding record');
     }
@@ -58,7 +56,7 @@ export class RecordsService {
       const index = records.findIndex((r: IRecord) => r.username === record.username);
       records[index] = {...records[index], ...record};
       localStorage.setItem(recordsKey, JSON.stringify(records));
-      return this.findRecords(records);
+      return this.findRecords();
     } else {
       throw new Error('Error occured while editing record')
     }
@@ -72,7 +70,7 @@ export class RecordsService {
       const index = records.findIndex((r: IRecord) => r.username === username);
       records.splice(index, 1);
       localStorage.setItem(recordsKey, JSON.stringify(records));
-      return this.findRecords(records);
+      return this.findRecords();
     } else {
       throw new Error('Error occured while deleting record')
     }
