@@ -1,0 +1,4 @@
+.record__row:hover {
+  cursor: pointer;
+  background: #f4f5f8;
+}

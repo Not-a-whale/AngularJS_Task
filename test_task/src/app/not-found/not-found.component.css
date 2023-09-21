@@ -1,0 +1,48 @@
+.container {
+  width: 80vw;
+  margin: 5vh auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 6em;
+  color: #333;
+}
+
+p {
+  font-size: 1.5em;
+  color: #666;
+}
+
+.link-container {
+  margin-top: 20px;
+}
+
+.back-link {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 1.2em;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.illustration {
+  width: 50%;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 4em;
+  }
+
+  p {
+    font-size: 1.2em;
+  }
+}

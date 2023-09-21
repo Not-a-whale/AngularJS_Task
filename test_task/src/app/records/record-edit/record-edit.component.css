@@ -1,0 +1,11 @@
+:host ::ng-deep .record__error-message {
+  color: red !important;
+}
+
+:host ::ng-deep .p-inputtext {
+  width: 100% !important;
+}
+
+.p-dropdown {
+  width: 100% !important;
+}

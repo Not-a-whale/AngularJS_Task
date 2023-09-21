@@ -1,0 +1,22 @@
+<p-toast></p-toast>
+<div class="record">
+  <div class="record__container">
+    <div class="record__card record__list transition-all transition-duration-500">
+      <div class="mb-3">
+        <p-button class="mb-3" label="Create" (click)="onCreateRecordStart()"></p-button>
+      </div>
+      <records-list class="mt-3" [records]="records" (recordSelected)="onRecordSelected($event)"></records-list>
+    </div>
+    <ng-container *ngIf="selectedRecord$ | async as delayedRecord">
+      <div class="record__card record__edit">
+        <record-edit *ngIf="delayedRecord" [record]="delayedRecord" (close)="closeModal()" (editRecord)="editRecord($event)" (deleteRecord)="deleteRecord($event)"></record-edit>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!isEdit">
+      <div class="record__card record__edit">
+        <record-edit [isEdit]="false" (saveRecord)="saveRecord($event)" (close)="closeModal()"></record-edit>
+      </div>
+    </ng-container>
+  </div>
+</div>
+

@@ -1,0 +1,52 @@
+<form action="" [formGroup]="recordForm" (ngSubmit)="onSubmit()">
+  <div class="flex justify-content-between mb-2 align-items-center">
+    <h2 class="" style="margin-bottom: 2rem">{{title}}</h2>
+    <i class="pi pi-times" style="font-size: 1.5rem" (click)="closeModal()"></i>
+  </div>
+  <div class="flex flex-column gap-2 mb-4 mt-2" *ngIf="isEdit">
+    <label htmlFor="username">USERNAME:</label>
+    <input type="text" id="username" formControlName="username" pInputText readonly />
+    <small *ngIf="recordForm.controls['username'].touched && recordForm.controls['username'].errors" class="record__error-message" id="username-help">Enter your username to reset your password.</small>
+  </div>
+  <div class="flex flex-column gap-2 mb-4">
+    <label htmlFor="first_name">First Name:</label>
+    <input type="text" id="first_name" pInputText  formControlName="first_name"  />
+    <small *ngIf="recordForm.controls['first_name'].touched && recordForm.controls['first_name'].errors" class="record__error-message" id="first_name-help">Enter your username to reset your password.</small>
+  </div>
+  <div class="flex flex-column gap-2 mb-4">
+    <label htmlFor="last_name">Last Name:</label>
+    <input type="text" id="last_name" pInputText  formControlName="last_name"  />
+    <small *ngIf="recordForm.controls['last_name'].touched && recordForm.controls['last_name'].errors" class="record__error-message" id="last_name-help">Enter your username to reset your password.</small>
+  </div>
+  <div class="flex flex-column gap-2 mb-4">
+    <label htmlFor="email">Email:</label>
+    <input type="text" id="email" pInputText  formControlName="email" />
+    <small *ngIf="recordForm.controls['email'].touched && recordForm.controls['email'].errors" class="record__error-message" id="email-help">Enter your username to reset your password.</small>
+  </div>
+  <div class="flex flex-column gap-2 mb-4">
+    <label htmlFor="type">Type:</label>
+    <p-dropdown [options]="typeNames" formControlName="user_type" [style]="{'width':'100%'}"></p-dropdown>
+    <small *ngIf="recordForm.controls['user_type'].touched && recordForm.controls['user_type'].errors" class="record__error-message" id="type-help">Enter your username to reset your password.</small>
+  </div>
+  <div class="flex flex-column gap-2 mb-4">
+    <label htmlFor="password">Password:</label>
+    <p-password name="password" formControlName="password" [feedback]="false" passwordCheck [style]="{'width':'100%'}"></p-password>
+    <small *ngIf="recordForm.controls['password'].touched && recordForm.controls['password'].errors" class="record__error-message" id="password">Password strength is not enough!</small>
+  </div>
+  <div class="flex flex-column gap-2 mb-4" *ngIf="recordForm.controls['password'].value">
+    <label htmlFor="repeat_password">Repeat Password:</label>
+    <p-password [feedback]="false" formControlName="repeat_password" [style]="{'width':'100%'}" [appPasswordMatch]="'password'"></p-password>
+    <small *ngIf="recordForm.controls['repeat_password'].touched && recordForm.controls['repeat_password'].errors && recordForm.hasError('passwordMatch', 'repeat_password')" class="record__error-message" id="repeat_password">Passwords don't match.</small>
+  </div>
+  <ng-container *ngIf="!isEdit">
+    <div class="flex justify-content-center align-items-center">
+      <p-button label="Create" (click)="onCreateRecord()"></p-button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="isEdit">
+    <div class="flex align-items-center justify-content-between">
+      <p-button label="Delete" styleClass="p-button-danger" (click)="onDeleteRecord()"></p-button>
+      <p-button label="Save" (click)="onEditRecord()"></p-button>
+    </div>
+  </ng-container>
+</form>

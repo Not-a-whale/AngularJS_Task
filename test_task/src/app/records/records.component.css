@@ -1,0 +1,24 @@
+.record__container {
+  display: flex;
+}
+
+.record__card {
+  margin: 3rem;
+  padding: 20px; /* Adjust the padding as needed */
+  background-color: #ffffff; /* Card background color */
+  border-radius: 8px; /* Card border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Box shadow properties */
+}
+
+.record__container > * {
+  transition: all 0.3s ease-in-out;
+}
+
+.record__list, .record__edit {
+  flex: 1;
+}
+
+.record__edit {
+  max-width: 30vw;
+  margin-left: 0;
+}
